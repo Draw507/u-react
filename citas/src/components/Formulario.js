@@ -42,6 +42,15 @@ const Formulario = ({ crearCita }) => {
 
         //Crear la cita
         crearCita(cita);
+
+        // Reiniciar Formulario
+        actualizarCita({
+            mascota: '',
+            propietario: '',
+            fecha:'',
+            hora:'',
+            sintomas:'',
+        })
         
     };
 
