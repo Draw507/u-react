@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from 'react';
+import Error from './Error';
 
 const Pregunta = () => {
     const [cantidad, guardarCantidad] = useState(0);
+    const [error, guardarError] = useState(false);
 
     const definirPresupuesto = e => {
         guardarCantidad(parseInt(e.target.value, 10));
@@ -9,6 +11,13 @@ const Pregunta = () => {
 
     const agregarPresupuesto = e => {
         e.preventDefault();
+
+        if(cantidad < 1  || isNaN(cantidad)){
+            guardarError(true)            ;
+            return;
+        }
+
+        guardarError(false);
     };
 
     return ( 
@@ -16,7 +25,7 @@ const Pregunta = () => {
             <h2>
                 Coloca tu presupuesto
             </h2>
-
+            {error ? <Error mensaje="El Presupuesto es incorrecto"/> : null}
             <form
                 onSubmit={agregarPresupuesto}
             >
