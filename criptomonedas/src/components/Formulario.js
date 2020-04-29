@@ -22,7 +22,7 @@ const Boton = styled.input`
     }
 `;
 
-const Formulario = () => {
+const Formulario = ({guardarMoneda, guardarCriptoMoneda}) => {
 
     const [listaCripto, guardarCriptoMonedas] = useState([]);
 
@@ -50,8 +50,17 @@ const Formulario = () => {
         consultarAPI();
     }, []);
 
+    const cotizarMoneda = e => {
+        e.preventDefault();
+
+        guardarMoneda(moneda);
+        guardarCriptoMoneda(criptoMoneda);
+    };
+
     return ( 
-        <form>
+        <form
+            onSubmit={cotizarMoneda}
+        >
             <SelectMonedas/>
             <SelectCripto />
             <Boton
