@@ -15,6 +15,8 @@ const CategoriasProvider = (props) => {
             const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
             const categorias = await axios.get(url);
 
+            console.log(categorias.data.drinks);
+
             guardarCategorias(categorias.data.drinks);
         };
         obtenerCategorias();
