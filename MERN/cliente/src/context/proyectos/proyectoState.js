@@ -13,7 +13,7 @@ const ProyectoState = props => {
     return (
         <proyectoContext.Provider
             value={{
-                nuevo: state.formulario
+                formulario: state.formulario
             }}
         >
             {props.children}
