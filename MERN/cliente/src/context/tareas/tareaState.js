@@ -17,6 +17,7 @@ const TareaState = props => {
             {nombre: 'Elegir Colores', estado: false, proyectoId: 1},
             {nombre: 'Elegir Plataforma de pago', estado: false, proyectoId: 2}
         ],
+        tareasproyecto: null
     };
     
     const [state, dispatch] = useReducer(TareaReducer, initialState);
@@ -32,6 +33,7 @@ const TareaState = props => {
         <TareaContext.Provider
             value={{
                 tareas: state.tareas,
+                tareasproyecto: state.tareasproyecto,
                 obtenerTareas
             }}
         >
