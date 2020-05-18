@@ -9,7 +9,7 @@ const FormTarea = () => {
     const tareasContext = useContext(tareaContext);
 
     const { proyecto } = proyectosContext;
-    const { tareaseleccionada, errortarea, agregarTarea, validarTarea, obtenerTareas } = tareasContext;
+    const { tareaseleccionada, errortarea, agregarTarea, validarTarea, obtenerTareas, actualizarTarea } = tareasContext;
 
     useEffect(() => {
         if(tareaseleccionada !== null){
@@ -49,9 +49,13 @@ const FormTarea = () => {
             return;
         }
 
-        tarea.proyectoId = proyectoActual.id;
-        tarea.estado = false;
-        agregarTarea(tarea);
+        if(tareaseleccionada === null){
+            tarea.proyectoId = proyectoActual.id;
+            tarea.estado = false;
+            agregarTarea(tarea);
+        } else {
+            actualizarTarea(tarea);
+        }    
 
         obtenerTareas(proyectoActual.id);
 
